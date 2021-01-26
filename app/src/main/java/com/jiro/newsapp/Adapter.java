@@ -15,16 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jiro.newsapp.Models.Articles;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     Context context;
-    List<Articles> articles;
+    ArrayList<Articles> articles;
 
-    public Adapter(Context context, List<Articles> articles) {
+    public Adapter(Context context) {
         this.context = context;
-        this.articles = articles;
+        this.articles = new ArrayList<>();
+    }
+
+    void addData(List<Articles> articles){
+        this.articles.clear();
+        this.articles.addAll(articles);
     }
 
     @NonNull

@@ -21,7 +21,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    final String API_KEY = "your api key";
+    final String API_KEY = "fcdb3a0201c2490eaf42385ed83e1f85";
     Adapter adapter;
     List<Articles> articles = new ArrayList<>();
     LinearLayoutManager layoutManager;
@@ -31,9 +31,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.recycleview);
+        adapter = new Adapter(this);
         layoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView = findViewById(R.id.recycleview);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
         String country = getCountry();
         retrieveJson(country,API_KEY);
 
@@ -48,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body().getArticles() !=null){
                     articles.clear();
                     articles = response.body().getArticles();
-                    adapter = new Adapter(MainActivity.this, articles);
-                    recyclerView.setAdapter(adapter);
+                    adapter.addData(articles);
                     adapter.notifyDataSetChanged();
                 }
             }
