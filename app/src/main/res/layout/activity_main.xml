@@ -31,7 +31,7 @@
         android:rowCount="2">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/etQUERY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -40,6 +40,7 @@
             android:layout_row="0"
             android:padding="10dp"
             android:hint="Search"
+            android:fontFamily="@font/g_bold"
             android:textColor="@color/grey"
             android:textColorHint="@color/grey"
             android:inputType="textPersonName"
@@ -47,26 +48,34 @@
 
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnSEARCH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
             android:backgroundTint="@color/black"
             android:drawableRight="@drawable/search_24"
-            android:paddingRight="20dp"
-            android:text="Button" />
+            android:paddingRight="20dp"/>
 
 
 
     </GridLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleview"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
 
 
